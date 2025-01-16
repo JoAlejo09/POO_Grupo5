@@ -32,4 +32,7 @@ import java.sql.ResultSet;
                 return false;
             }
         }
+        public ResultSet consultarUsuario(){
+
+        }
     }

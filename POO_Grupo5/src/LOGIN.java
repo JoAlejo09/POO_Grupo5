@@ -1,9 +1,7 @@
 package src;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 public class LOGIN {
     private JTextField textField1;
     private JPasswordField passwordField1;

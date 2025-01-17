@@ -7,9 +7,9 @@ Integrantes:
  
 * Xavier Ochoa
 
-* Joseph
+* Joseph Changoluiza
 
-* Justin  
+* Justin Imbiquiango
 --------------------------------------
 Claves de acceso.
 

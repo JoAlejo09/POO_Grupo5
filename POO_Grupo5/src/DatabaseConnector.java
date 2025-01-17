@@ -9,7 +9,7 @@ import java.sql.ResultSet;
         private static final String USER="ulgbezh1asxgnzvk";
         private static final String PORT="3306";
         private static final String PASSWORD="fN8sFS8o9GHyhvQihONJ";
-        private static final String URL = "jdbc:mysql://"+HOST+":"+PORT+"/"+DB; //DIRECCIONAMIENTO DE LA BASE DE DATOS PARA CONEXION EN LA NUBE
+        private static final String URL = "jdbc:mysql://"+HOST+":"+PORT+"/"+DB+"?useSSL=true&requireSSL=true&verifyServerCertificate=false"; //DIRECCIONAMIENTO DE LA BASE DE DATOS PARA CONEXION EN LA NUBE
         ResultSet rs;
 
      public static Connection getConnection() throws Exception {

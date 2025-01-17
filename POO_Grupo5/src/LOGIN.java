@@ -3,6 +3,9 @@ package src;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class LOGIN {
     private JTextField textField1;
@@ -26,6 +29,7 @@ public class LOGIN {
                     String usuario = textField1.getText();
                     String password = new String(passwordField1.getPassword());
                     String rolSeleccionado = (String) comboBox1.getSelectedItem();
+                    System.out.println(rolSeleccionado);
 
                     if (validarCredenciales(usuario, password, rolSeleccionado)) {
                         JOptionPane.showMessageDialog(null, "Inicio de sesión exitoso. Rol: " + rolSeleccionado);
@@ -40,8 +44,8 @@ public class LOGIN {
 
     // Creamos este método para la validacion de las credenciales
     private boolean validarCredenciales(String usuario, String password, String rol) {
-        String consulta = "Select Sount(*) As total From usuarios Where nombre_usuario = ? And password = ? And rol = ?";
-        try (Connection conexion = ConectorBaseDatos.obtenerConexion();
+        String consulta = "Select Count(*) As total from Usuarios Where nombre = ? And password = ? And rol = ?";
+        try (Connection conexion = DatabaseConnector.getConnection();
              PreparedStatement stmt = conexion.prepareStatement(consulta)) {
 
             stmt.setString(1, usuario);
@@ -50,6 +54,7 @@ public class LOGIN {
 
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
+                System.out.println(rs.getInt("total"));
                 return rs.getInt("total") > 0; // Si hay resultados, las credenciales seran correctas
             }
         } catch (Exception ex) {
@@ -64,6 +69,7 @@ public class LOGIN {
         if (rol.equalsIgnoreCase("Usuario")) {
             JOptionPane.showMessageDialog(null, "Abriendo ventana para Usuario...");
             // abrirá la ventana específica para el Usuario
+
 
 
         } else if (rol.equalsIgnoreCase("Administrador")) {
